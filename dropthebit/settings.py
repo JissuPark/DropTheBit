@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend',
-    'frontend',
     'rest_framework',
     'corsheaders',
 ]
@@ -59,7 +58,6 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
     "http://127.0.0.1:8000",
-    "http://127.0.0.1:11762",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -71,9 +69,6 @@ import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'frontend', 'build'),
-        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,9 +81,6 @@ TEMPLATES = [
     },
 ]
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
-]
 
 WSGI_APPLICATION = 'dropthebit.wsgi.application'
 
