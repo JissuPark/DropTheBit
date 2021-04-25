@@ -13,13 +13,8 @@
 
 from .api import market, exchange_rate
 import json
-<<<<<<< HEAD
-
-from .djongoManager import get_krw_coin_name, get_eng_coin_name
-=======
 from .djongoManager import *
 from .serializer import *
->>>>>>> 26336b513edcc32612bdc51efd42343e232b399b
 
 Market_Coin_Price = market.get_market_all()
 
