@@ -1,4 +1,5 @@
 from .models import User, CoinName, UserFavorite
+from .serializer import UserSerializer, CoinNameSerializer
 from django.core.exceptions import ObjectDoesNotExist
 
 
@@ -23,13 +24,25 @@ def insert_user_info(user_id, user_pw, email, name):
 
 
 def get_krw_coin_name(coin_name):
-    res = CoinName.objects.get(coin_id=coin_name)
-    return res['name_kr']
+    try:
+        res = CoinName.objects.get(coin_id=coin_name)
+        ser = CoinNameSerializer(res)
+        ret = ser.data["name_kr"]
+    except ObjectDoesNotExist:
+        ret = ""
+
+    return ret
 
 
 def get_eng_coin_name(coin_name):
-    res = CoinName.objects.get(coin_id=coin_name)
-    return res['name_en']
+    try:
+        res = CoinName.objects.get(coin_id=coin_name)
+        ser = CoinNameSerializer(res)
+        ret = ser.data["name_en"]
+    except ObjectDoesNotExist:
+        ret = ""
+
+    return ret
 
 
 def get_standard_market(user_id):

@@ -12,7 +12,9 @@
 """
 
 from .api import market, exchange_rate
-import json 
+import json
+
+from .djongoManager import get_krw_coin_name, get_eng_coin_name
 
 Market_Coin_Price = market.get_market_all()
 
@@ -58,7 +60,7 @@ def get_one_coin_info(coin, std_market, tar_market):
 
 # TODO 02: 코인별 kr 이름 받아오기
 def get_name_kr(coin):
-    name_kr = ''
+    name_kr = get_krw_coin_name(coin)
     # DB에서 coin에 대한 한글 이름 받아오기
     # name_kr = MongoDbManager().get_KR_coin_name({'coin':coin})
     return name_kr
@@ -66,7 +68,7 @@ def get_name_kr(coin):
 
 # TODO 03: 코인별 en 이름 받아오기
 def get_name_en(coin):
-    name_en = ''
+    name_en = get_eng_coin_name(coin)
 
     # DB에서 coin에 대한 영어 이름 받아오기
     # name_en = MongoDbManager().get_EN_coin_name({'coin':coin})
