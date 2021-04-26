@@ -61,6 +61,7 @@ def update_star_market(request):
 
 @api_view(['GET'])
 def get_login(request):
+    print(request.GET)
     user_id = request.GET.get('user_id')  # 이거 view에서 넘겨받아야 한다
     user_pw = request.GET.get('user_pw')
     status = login.get_login(user_id, user_pw)  # 200 성공, 400 비번틀림, 404 회원정보 없음
